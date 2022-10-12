@@ -5,11 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "test-cover":"jest --coverage",
+    "test-cover": "jest --coverage",
     "test-addon": "jest --verbose --silent --maxWorkers=1 ",
     "test-addon:watch": "npm run test -- --watchAll",
     "test-default": "jest -- --coverage"
-
   },
   "repository": {
     "type": "git",
@@ -19,11 +18,14 @@
     "collectCoverage": true,
     "reporters": [
       "default",
-      ["jest-html-reporters", {
-        "publicPath": "./html-report",
-        "filename": "report.html"
-      }]
+      [
+        "jest-html-reporters",
+        {
+          "publicPath": "./html-report",
+          "filename": "report.html"
+        }
       ]
+    ]
   },
   "keywords": [],
   "author": "",
