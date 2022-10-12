@@ -63,7 +63,7 @@ describe('Testing class bullet',function(){
         let res=bullet.collideWith(sprite)
         expect(res).toEqual(false)
     });
-    it('should be return `False` when second condition is false', () => {
+    it('should be return `False` when first condition is false', () => {
         sprite['x']=250;
         let res=bullet.collideWith(sprite)
         expect(res).toEqual(false)
