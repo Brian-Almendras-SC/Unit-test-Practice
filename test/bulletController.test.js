@@ -6,7 +6,7 @@ describe('Testing controller for bullet.js `bulletController.js`',function(){
     beforeEach(()=>{
         bullet_Controller=new bulletController("canvas", 180, "lightred", true,true)// en el ultimo campo true para enmy y enemi controller ponen false, poor que tiene que entrar al if de esos constructores
     })
-    it('should create ', () => {
+    it('should create', () => {
         expect(bullet_Controller).toBeTruthy()
     });
 })

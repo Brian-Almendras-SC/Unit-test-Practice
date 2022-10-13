@@ -1,4 +1,4 @@
-export default class audio{
+export default class image{
     constructor(){
         this.src="";
     }
