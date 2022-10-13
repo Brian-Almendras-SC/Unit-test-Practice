@@ -1,4 +1,4 @@
-export default class image{
+export default class imagen{
     constructor(){
         this.src="";
     }
