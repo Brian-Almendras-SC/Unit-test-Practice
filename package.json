@@ -17,6 +17,8 @@
   "jest": {
     "setupFiles": ["jest-canvas-mock"],
     "collectCoverage": true,
+    "collectCoverageFrom": [
+      "**/*.{js,jsx}","!**/node_modules/**","!**/coverage/**","!**/html-report/**"],
     "reporters": [
       "default",
       [
