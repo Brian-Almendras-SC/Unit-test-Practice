@@ -1,17 +1,22 @@
 import Bullet from "./Bullet.js";
-
+import audio from "./extension/audio.js";
 export default class BulletController {
   bullets = [];
   timeTillNextBulletAllowed = 0;
 
-  constructor(canvas, maxBulletsAtATime, bulletColor, soundEnabled) {
+  constructor(canvas, maxBulletsAtATime, bulletColor, soundEnabled,audioCreation=false) {
     this.canvas = canvas;
     this.maxBulletsAtATime = maxBulletsAtATime;
     this.bulletColor = bulletColor;
     this.soundEnabled = soundEnabled;
-
-    this.shootSound = new Audio("sounds/shoot.wav");
-    this.shootSound.volume = 0.1;
+    if(!audioCreation){
+      this.shootSound = new Audio("sounds/shoot.wav");
+      this.shootSound.volume = 0.1;
+    }
+    else{
+      this.shootSound = new audio("sounds/shoot.wav");
+      this.shootSound.volume = 0.1;
+    }
   }
 
   draw(ctx) {

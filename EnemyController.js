@@ -1,4 +1,5 @@
 import Enemy from "./Enemy.js";
+import audio from "./extension/audio.js";
 import MovingDirection from "./MovingDirection.js";
 
 export default class EnemyController {
@@ -22,13 +23,18 @@ export default class EnemyController {
   fireBulletTimerDefault = 100;
   fireBulletTimer = this.fireBulletTimerDefault;
 
-  constructor(canvas, enemyBulletController, playerBulletController) {
+  constructor(canvas, enemyBulletController, playerBulletController,audioCreation=true) {
     this.canvas = canvas;
     this.enemyBulletController = enemyBulletController;
     this.playerBulletController = playerBulletController;
 
+   if (audioCreation) {
     this.enemyDeathSound = new Audio("sounds/enemy-death.wav");
     this.enemyDeathSound.volume = 0.1;
+   } else {
+    this.enemyDeathSound = new audio("sounds/enemy-death.wav");
+    this.enemyDeathSound.volume = 0.1;
+   }
 
     this.createEnemies();
   }
