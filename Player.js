@@ -1,9 +1,10 @@
+import imagen from "./extension/image.js";
 export default class Player {
   rightPressed = false;
   leftPressed = false;
   shootPressed = false;
 
-  constructor(canvas, velocity, bulletController) {
+  constructor(canvas, velocity, bulletController,imageCreation=true,documento=true){
     this.canvas = canvas;
     this.velocity = velocity;
     this.bulletController = bulletController;
@@ -12,11 +13,18 @@ export default class Player {
     this.y = this.canvas.height - 75;
     this.width = 50;
     this.height = 48;
-    this.image = new Image();
-    this.image.src = "images/player.png";
 
-    document.addEventListener("keydown", this.keydown);
-    document.addEventListener("keyup", this.keyup);
+    if(imageCreation){
+      this.image = new Image();
+      this.image.src = "images/player.png";
+    }else{
+      this.image = new imagen();
+      this.image.src = "images/player.png";
+    }
+    if(documento){
+      document.addEventListener("keydown", this.keydown);
+      document.addEventListener("keyup", this.keyup);
+    }
   }
 
   draw(ctx) {
