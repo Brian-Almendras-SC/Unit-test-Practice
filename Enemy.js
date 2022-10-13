@@ -1,4 +1,4 @@
-import image from "./extension/image.js";
+import imagen from "./extension/image.js";
 export default class Enemy {
   constructor(x, y, imageNumber,imageCreatio=true) {
     this.x = x;
@@ -10,7 +10,7 @@ export default class Enemy {
       this.image = new Image();
       this.image.src = `images/enemy${imageNumber}.png`;
     } else {
-      this.image = new image();
+      this.image = new imagen();
       this.image.src = `images/enemy${imageNumber}.png`;
     }
   }
