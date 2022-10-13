@@ -1,12 +1,18 @@
+import image from "./extension/image.js";
 export default class Enemy {
-  constructor(x, y, imageNumber) {
+  constructor(x, y, imageNumber,imageCreatio=true) {
     this.x = x;
     this.y = y;
     this.width = 44;
     this.height = 32;
 
-    this.image = new Image();
-    this.image.src = `images/enemy${imageNumber}.png`;
+    if (imageCreatio) {
+      this.image = new Image();
+      this.image.src = `images/enemy${imageNumber}.png`;
+    } else {
+      this.image = new image();
+      this.image.src = `images/enemy${imageNumber}.png`;
+    }
   }
 
   draw(ctx) {
