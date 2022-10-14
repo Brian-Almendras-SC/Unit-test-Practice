@@ -20,24 +20,24 @@ export default class BulletController {
   }
 
   draw(ctx) {
+    console.log(this.canvas)
     this.bullets = this.bullets.filter(
       (bullet) => bullet.y + bullet.width > 0 && bullet.y <= this.canvas.height
     );
-    console.log(this.bullets.length)
-    console.log("in",this.timeTillNextBulletAllowed)
     this.bullets.forEach((bullet) => bullet.draw(ctx));
     if (this.timeTillNextBulletAllowed > 0) {
       this.timeTillNextBulletAllowed--;
     }
-    console.log("out",this.timeTillNextBulletAllowed)
+    console.log("time",this.timeTillNextBulletAllowed)
+  
   }
 
   collideWith(sprite) {
-    console.log(this.bullets)
+    //console.log(this.bullets)
     const bulletThatHitSpriteIndex = this.bullets.findIndex((bullet) =>
       bullet.collideWith(sprite)
     );
-
+    //console.log("bulletThatHitSpriteIndex",bulletThatHitSpriteIndex)
     if (bulletThatHitSpriteIndex >= 0) {
       this.bullets.splice(bulletThatHitSpriteIndex, 1);
       return true;
