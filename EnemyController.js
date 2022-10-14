@@ -36,7 +36,9 @@ export default class EnemyController {
     this.enemyDeathSound.volume = 0.1;
    }
 
+
    if(imageCreation){
+
     this.createEnemies();
    }
    else{
