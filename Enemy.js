@@ -16,7 +16,9 @@ export default class Enemy {
   }
 
   draw(ctx) {
-    ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
+    if(ctx != null){
+      ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
+    }
   }
 
   move(xVelocity, yVelocity) {

@@ -33,7 +33,9 @@ export default class Player {
     }
     this.move();
     this.collideWithWalls();
-    ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
+    if(ctx!= null){
+      ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
+    }    
   }
 
   collideWithWalls() {
@@ -48,10 +50,10 @@ export default class Player {
     }
   }
 
-  move() {
+  move() {    
     if (this.rightPressed) {
       this.x += this.velocity;
-    } else if (this.leftPressed) {
+    } else if (this.leftPressed) {      
       this.x += -this.velocity;
     }
   }
@@ -79,4 +81,12 @@ export default class Player {
       this.shootPressed = false;
     }
   };
+
+  getX() {
+    return this.x;
+  }
+
+  setVelocity(velocity) {
+    this.velocity = velocity
+  }
 }

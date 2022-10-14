@@ -23,7 +23,7 @@ export default class EnemyController {
   fireBulletTimerDefault = 100;
   fireBulletTimer = this.fireBulletTimerDefault;
 
-  constructor(canvas, enemyBulletController, playerBulletController,audioCreation=true) {
+  constructor(canvas, enemyBulletController, playerBulletController,audioCreation=true,enemyImage=true) {
     this.canvas = canvas;
     this.enemyBulletController = enemyBulletController;
     this.playerBulletController = playerBulletController;
@@ -36,14 +36,14 @@ export default class EnemyController {
     this.enemyDeathSound.volume = 0.1;
    }
 
-    this.createEnemies();
+    this.createEnemies(enemyImage);
   }
 
-  draw(ctx) {
+  draw(ctx) {    
     this.decrementMoveDownTimer();
     this.updateVelocityAndDirection();
     this.collisionDetection();
-    this.drawEnemies(ctx);
+    this.drawEnemies(ctx);       
     this.resetMoveDownTimer();
     this.fireBullet();
   }
@@ -137,13 +137,13 @@ export default class EnemyController {
 
   happy = () => {};
 
-  createEnemies() {
+  createEnemies(enemyImage) {
     this.enemyMap.forEach((row, rowIndex) => {
       this.enemyRows[rowIndex] = [];
       row.forEach((enemyNubmer, enemyIndex) => {
         if (enemyNubmer > 0) {
           this.enemyRows[rowIndex].push(
-            new Enemy(enemyIndex * 50, rowIndex * 35, enemyNubmer)
+            new Enemy(enemyIndex * 50, rowIndex * 35, enemyNubmer,enemyImage)
           );
         }
       });
@@ -152,5 +152,9 @@ export default class EnemyController {
 
   collideWith(sprite) {
     return this.enemyRows.flat().some((enemy) => enemy.collideWith(sprite));
+  }
+
+  getCurrentDirection(){
+    return this.currentDirection
   }
 }
