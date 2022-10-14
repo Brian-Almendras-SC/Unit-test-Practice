@@ -4,7 +4,8 @@ import BulletController from '../BulletController.js';
 import MovingDirection from "../MovingDirection.js";
 
 describe('Testing controller for Enemy.js EnemyController.js',function(){
-    let enemy_controller,bullet_Controller1,bullet_Controller2,canvas,ctx,sprite;
+    let sprite,enemy_controller,bullet_Controller1,bullet_Controller2,canvas,ctx;
+
 
     beforeEach(()=>{
         bullet_Controller1=new BulletController(canvas,5, "lightred", false,true)
@@ -23,7 +24,7 @@ describe('Testing controller for Enemy.js EnemyController.js',function(){
         }
     })
 
-    it('should be call enemyController ', () => {
+    it('should be called enemyController ', () => {
         expect(enemy_controller).toBeTruthy()
     });
 
@@ -41,13 +42,13 @@ describe('Testing controller for Enemy.js EnemyController.js',function(){
         expect(enemy_controller.moveDownTimer).toBe(50);
     });
 
-    it('it should the next atributes when we fire the event fireBullet, when fireBulletTimer equals 0 ', () => {
+    it('it should modify the next atributes when we fire the event fireBullet, when fireBulletTimer equals 0 ', () => {
         enemy_controller.fireBulletTimer=0;
         enemy_controller.fireBullet();
         expect(enemy_controller.fireBulletTimer).toBe(100);
     });
 
-    it('it should the next atributes when we fire the event fireBullet, when fireBulletTimer higher than 0 ', () => {
+    it('it should modify the next atributes when we fire the event fireBullet, when fireBulletTimer higher than 0 ', () => {
         enemy_controller.fireBulletTimer=50;
         enemy_controller.fireBullet();
         expect(enemy_controller.fireBulletTimer).toBe(49);
@@ -86,6 +87,12 @@ describe('Testing controller for Enemy.js EnemyController.js',function(){
         enemy_controller.currentDirection=1;
         enemy_controller.decrementMoveDownTimer()
         expect(enemy_controller.moveDownTimer).toEqual(30)
+    });
+
+    it('should change values after running collisionDetection', () => {
+        enemy_controller.collisionDetection();
+        enemy_controller.enemyDeathSound.play.toHaveBeenCalled;
+        expect(enemy_controller.enemyDeathSound.currentTime).toBeGreaterThanOrEqual(0)
     });
 
 })
