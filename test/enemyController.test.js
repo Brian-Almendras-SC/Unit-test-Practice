@@ -10,7 +10,7 @@ describe('Testing controller for Enemy.js EnemyController.js',function(){
         bullet_Controller1=new BulletController(canvas,5, "lightred", false,true)
         bullet_Controller2=new BulletController(canvas,5, "lightred", true,true)
         canvas={height:190}
-        enemy_controller=new EnemyController("canvas", bullet_Controller1,bullet_Controller2,false,false);// en el ultimo campo true para enmy y enemi controller ponen false, poor que tiene que entrar al if de esos constructores
+        enemy_controller=new EnemyController("canvas", bullet_Controller1,bullet_Controller2,false,false);
 
         sprite = {
             canvas:"sprite", 
@@ -23,7 +23,7 @@ describe('Testing controller for Enemy.js EnemyController.js',function(){
         }
     })
 
-    it('should be call enemyController ', () => {
+    it('should be called enemyController ', () => {
         expect(enemy_controller).toBeTruthy()
     });
 
@@ -41,13 +41,13 @@ describe('Testing controller for Enemy.js EnemyController.js',function(){
         expect(enemy_controller.moveDownTimer).toBe(50);
     });
 
-    it('it should the next atributes when we fire the event fireBullet, when fireBulletTimer equals 0 ', () => {
+    it('it should modify the next atributes when we fire the event fireBullet, when fireBulletTimer equals 0 ', () => {
         enemy_controller.fireBulletTimer=0;
         enemy_controller.fireBullet();
         expect(enemy_controller.fireBulletTimer).toBe(100);
     });
 
-    it('it should the next atributes when we fire the event fireBullet, when fireBulletTimer higher than 0 ', () => {
+    it('it should modify the next atributes when we fire the event fireBullet, when fireBulletTimer higher than 0 ', () => {
         enemy_controller.fireBulletTimer=50;
         enemy_controller.fireBullet();
         expect(enemy_controller.fireBulletTimer).toBe(49);

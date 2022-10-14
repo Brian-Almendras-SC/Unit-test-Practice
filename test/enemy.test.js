@@ -11,7 +11,7 @@ describe('Testing class Enemy',function(){
         }
     })
 
-test('should created enemy', () => {
+test('should have created enemy', () => {
         expect(enemy).toBeTruthy()
 })        
 
@@ -41,35 +41,40 @@ test('Should replaced to drawImage with enemy image parameter',function() {
     expect(enemy.y).toEqual(180)
 })
 
-test('Should update x and y from enemy ',function() {
+test('Should update x and y from enemy using the function move',function() {
     enemy.move(2,1);
-    expect(enemy.x).toBeGreaterThanOrEqual(1)
-    expect(enemy.y).toBeGreaterThanOrEqual(1)
+    expect(enemy.x).toBe(202)
+    expect(enemy.y).toBe(181)
 })
+
 //All paths from collideWith
-it('should be return `true` when all conditions for enemy colllide are true', () => {
+
+it('should return `true` when all conditions for enemy colllide are true', () => {
 
     let res=enemy.collideWith(sprite)
     expect(res).toEqual(true)
 });
-it('should be return `False` when last condition of enemy collideWith is false', () => {
+
+it('should return `False` when last condition of enemy collideWith is false', () => {
     sprite['y']=200;
     enemy.x=10;
     let res=enemy.collideWith(sprite)
     expect(res).toEqual(false)
 });
 
-it('should be return `False` when third  condition of enemy collideWith is false', () => {
+it('should  return `False` when third  condition of enemy collideWith is false', () => {
     sprite['y']=250;
     let res=enemy.collideWith(sprite)
     expect(res).toEqual(false)
 });
-it('should be return `False` when second condition of enemy collideWith is false', () => {
+
+it('should  return `False` when second condition of enemy collideWith is false', () => {
     sprite['x']=180;
     let res=enemy.collideWith(sprite)
     expect(res).toEqual(false)
 });
-it('should be return `False` when second condition of enemy collideWith is false', () => {
+
+it('should be return `False` when the first condition of enemy collideWith is false', () => {
     sprite['x']=250;
     let res=enemy.collideWith(sprite)
     expect(res).toEqual(false)
