@@ -4,7 +4,7 @@ import BulletController from '../BulletController.js';
 import MovingDirection from "../MovingDirection.js";
 
 describe('Testing controller for Enemy.js EnemyController.js',function(){
-    let enemy_controller,bullet_Controller1,bullet_Controller2,canvas,ctx;
+    let sprite,enemy_controller,bullet_Controller1,bullet_Controller2,canvas,ctx;
 
     beforeEach(()=>{
         bullet_Controller1=new BulletController(canvas,5, "lightred", false,true)
@@ -86,6 +86,12 @@ describe('Testing controller for Enemy.js EnemyController.js',function(){
         enemy_controller.currentDirection=1;
         enemy_controller.decrementMoveDownTimer()
         expect(enemy_controller.moveDownTimer).toEqual(30)
+    });
+
+    it('should change values after running collisionDetection', () => {
+        enemy_controller.collisionDetection();
+        enemy_controller.enemyDeathSound.play.toHaveBeenCalled;
+        expect(enemy_controller.enemyDeathSound.currentTime).toBeGreaterThanOrEqual(0)
     });
 
 })
