@@ -13,6 +13,7 @@ describe('Testing class bullet',function(){
             height:20
         }
     })
+    //constructor
     test('should created bullet', () => {
         expect(bullet).toBeTruthy()
     });
@@ -23,6 +24,7 @@ describe('Testing class bullet',function(){
         expect(bullet.velocity).toEqual(15)
         expect(bullet.bulletColor).toMatch("red")
     })
+    //Draw
     test('Should replaced to fillstyle with bullet color parameter',function() {
         let EjamplefillRect= {
             x:300, 
@@ -35,7 +37,7 @@ describe('Testing class bullet',function(){
             fillRect: function(){
                 return EjamplefillRect;
                 }
-            }    
+            }
         bullet.draw(ctx)
         expect(ctx.fillStyle).toBe("red")
         expect(ctx.fillRect()).toEqual(EjamplefillRect)
