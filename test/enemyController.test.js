@@ -4,7 +4,7 @@ import BulletController from '../BulletController.js';
 import MovingDirection from "../MovingDirection.js";
 
 describe('Testing controller for Enemy.js EnemyController.js',function(){
-    let enemy_controller,bullet_Controller1,bullet_Controller2,canvas,ctx;
+    let enemy_controller,bullet_Controller1,bullet_Controller2,canvas,ctx,sprite;
 
     beforeEach(()=>{
         bullet_Controller1=new BulletController(canvas,5, "lightred", false,true)
