@@ -2,7 +2,7 @@ import Enemy from "../Enemy.js";
 describe('Testing class Enemy',function(){
     let enemy,sprite
     beforeEach(()=>{
-        enemy=new Enemy(200, 180, 1,true) 
+        enemy=new Enemy(200, 180, 1,false) 
         sprite = {
             x:201, 
             y:181, 
@@ -11,36 +11,50 @@ describe('Testing class Enemy',function(){
         }
     })
 
-test('Should assignamented parameters of constructor the enemy',function() {
+test('should created enemy', () => {
+        expect(enemy).toBeTruthy()
+})        
+
+test('Should assign parameters of constructor the enemy',function() {
     expect(enemy.x).toBeGreaterThanOrEqual(1)
     expect(enemy.y).toBeGreaterThanOrEqual(1)
+    expect(enemy.width).toBeGreaterThanOrEqual(44)
+    expect(enemy.height).toBeGreaterThanOrEqual(32)
 })
-test('Should replaced to fillstyle with enemy color parameter',function() {
-    let EjamplefillRect= {
+
+test('Should replaced to drawImage with enemy image parameter',function() {
+    let EjampledrawImage= {
+        image:enemy.image,
         x:300, 
         y:500, 
         width:250,
         height:400
         },
     ctx={
-        fillStyle:"Blue",
-        fillRect: function(){
-            return EjamplefillRect;
+        drawImage: function(){
+            return EjampledrawImage;
             }
-        }  
+        } 
+
     enemy.draw(ctx)
-    expect(ctx.fillStyle).toBe("red")
-    expect(ctx.fillRect()).toEqual(EjamplefillRect)
-    expect(enemy.y).toEqual(165)
+    expect(ctx.drawImage()).toEqual(EjampledrawImage)
+    expect(enemy.y).toEqual(180)
 })
-//Path coverage of collideWith
-it('should be return `TRUE` when all conditions for enemy colllide are true', () => {
+
+test('Should update x and y from enemy ',function() {
+    enemy.move(2,1);
+    expect(enemy.x).toBeGreaterThanOrEqual(1)
+    expect(enemy.y).toBeGreaterThanOrEqual(1)
+})
+//All paths from collideWith
+it('should be return `true` when all conditions for enemy colllide are true', () => {
 
     let res=enemy.collideWith(sprite)
     expect(res).toEqual(true)
 });
 it('should be return `False` when last condition of enemy collideWith is false', () => {
     sprite['y']=200;
+    enemy.x=10;
     let res=enemy.collideWith(sprite)
     expect(res).toEqual(false)
 });
