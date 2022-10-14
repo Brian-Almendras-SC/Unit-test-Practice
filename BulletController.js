@@ -20,7 +20,6 @@ export default class BulletController {
   }
 
   draw(ctx) {
-    console.log(this.canvas)
     this.bullets = this.bullets.filter(
       (bullet) => bullet.y + bullet.width > 0 && bullet.y <= this.canvas.height
     );
@@ -28,8 +27,6 @@ export default class BulletController {
     if (this.timeTillNextBulletAllowed > 0) {
       this.timeTillNextBulletAllowed--;
     }
-    console.log("time",this.timeTillNextBulletAllowed)
-  
   }
 
   collideWith(sprite) {

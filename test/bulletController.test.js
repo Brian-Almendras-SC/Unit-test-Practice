@@ -57,7 +57,17 @@ describe('Testing controller for bullet.js `bulletController.js`',function(){
     });
     //shoot
     it('should change the bullet parameters with shoot parameters', () => {
-        bullet_Controller.shoot(210,190,5,0)
-        expect(bullet_Controller)
+        bullet_Controller.timeTillNextBulletAllowed=0;
+        bullet_Controller.shoot(210,190,5,1)
+        expect(bullet_Controller.bullets[1]).toHaveProperty(["canvas","height"],190)
+    });
+    it('shouldn`t change the bullet parameters with shoot parameters when this fail', () => {
+        bullet_Controller.shoot(210,190,5,1)
+        expect(bullet_Controller.bullets[0]).toHaveProperty(["x"],200)
+    });
+    it('should change the bullet parameters with shoot parameters but sound is disable', () => {
+        bullet_Controller.soundEnabled=false
+        bullet_Controller.shoot(210,190,5,1)
+        expect(bullet_Controller.soundEnabled).not.toEqual(true)
     });
 })
