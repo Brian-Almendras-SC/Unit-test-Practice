@@ -35,20 +35,23 @@ export default class EnemyController {
     this.enemyDeathSound = new audio("sounds/enemy-death.wav");
     this.enemyDeathSound.volume = 0.1;
    }
-   
-   if(imageCreation){ 
+
+
+   if(imageCreation){
+
     this.createEnemies();
    }
    else{
     this.createEnemies(false);
    }
+
   }
 
-  draw(ctx) {
+  draw(ctx) {    
     this.decrementMoveDownTimer();
     this.updateVelocityAndDirection();
     this.collisionDetection();
-    this.drawEnemies(ctx);
+    this.drawEnemies(ctx);       
     this.resetMoveDownTimer();
     this.fireBullet();
   }
@@ -142,6 +145,7 @@ export default class EnemyController {
 
   happy = () => {};
 
+
   createEnemies(imageCreatio=true) {
     this.enemyMap.forEach((row, rowIndex) => {
       this.enemyRows[rowIndex] = [];
@@ -157,5 +161,9 @@ export default class EnemyController {
 
   collideWith(sprite) {
     return this.enemyRows.flat().some((enemy) => enemy.collideWith(sprite));
+  }
+
+  getCurrentDirection(){
+    return this.currentDirection
   }
 }
