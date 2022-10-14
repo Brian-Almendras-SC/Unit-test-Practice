@@ -42,7 +42,7 @@ describe('Testing controller for bullet.js `bulletController.js`',function(){
         expect(bullet_Controller.timeTillNextBulletAllowed).toBeLessThanOrEqual(0)
     });
     
-    it('should drew when it shoots the bullet and time for next bullet is greater than 0 ', () => {
+    it('should drew when it shoots the bullet and time for next bullet is less than 0 ', () => {
         bullet_Controller.timeTillNextBulletAllowed=-1;
         bullet_Controller.draw(ctx)
         expect(bullet_Controller.timeTillNextBulletAllowed).toBeLessThan(0)
@@ -56,7 +56,8 @@ describe('Testing controller for bullet.js `bulletController.js`',function(){
         expect(bullet_Controller.collideWith(sprite)).toEqual(false)
     });
     //shoot
-    it('should ', () => {
-        bullet_Controller.shoot(10,10,5)
+    it('should change the bullet parameters with shoot parameters', () => {
+        bullet_Controller.shoot(210,190,5,0)
+        expect(bullet_Controller)
     });
 })
