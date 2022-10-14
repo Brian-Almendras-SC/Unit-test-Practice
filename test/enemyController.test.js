@@ -10,7 +10,7 @@ describe('Testing controller for Enemy.js EnemyController.js',function(){
         bullet_Controller1=new BulletController(canvas,5, "lightred", false,true)
         bullet_Controller2=new BulletController(canvas,5, "lightred", true,true)
         canvas={height:190}
-        enemy_controller=new EnemyController("canvas", bullet_Controller1,bullet_Controller2,false,false);// en el ultimo campo true para enmy y enemi controller ponen false, poor que tiene que entrar al if de esos constructores
+        enemy_controller=new EnemyController("canvas", bullet_Controller1,bullet_Controller2,false,false);
 
         sprite = {
             canvas:"sprite", 

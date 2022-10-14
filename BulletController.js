@@ -30,11 +30,9 @@ export default class BulletController {
   }
 
   collideWith(sprite) {
-    //console.log(this.bullets)
     const bulletThatHitSpriteIndex = this.bullets.findIndex((bullet) =>
       bullet.collideWith(sprite)
     );
-    //console.log("bulletThatHitSpriteIndex",bulletThatHitSpriteIndex)
     if (bulletThatHitSpriteIndex >= 0) {
       this.bullets.splice(bulletThatHitSpriteIndex, 1);
       return true;
