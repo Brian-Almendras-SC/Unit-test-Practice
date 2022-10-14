@@ -6,6 +6,7 @@ import MovingDirection from "../MovingDirection.js";
 describe('Testing controller for Enemy.js EnemyController.js',function(){
     let sprite,enemy_controller,bullet_Controller1,bullet_Controller2,canvas,ctx;
 
+
     beforeEach(()=>{
         bullet_Controller1=new BulletController(canvas,5, "lightred", false,true)
         bullet_Controller2=new BulletController(canvas,5, "lightred", true,true)

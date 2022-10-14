@@ -51,7 +51,7 @@ describe('Testing controller for bullet.js `bulletController.js`',function(){
     it('should return true when bullet hit sprite', () => {
         expect(bullet_Controller.collideWith(sprite)).toEqual(true)
     });
-    it('should return false when bullet hit sprite', () => {
+    it('should return false when bullet not hits sprite', () => {
         sprite['y']=250;
         expect(bullet_Controller.collideWith(sprite)).toEqual(false)
     });
